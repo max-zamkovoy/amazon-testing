@@ -3,7 +3,9 @@ package features.steps;
 import core.DriverInitializer;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
+import enums.ReviewRating;
 import org.openqa.selenium.WebDriver;
 import pages.CategoryPage;
 
@@ -30,6 +32,11 @@ public class TestFiltersOnCategoryPageSteps {
     @When("^select any subcategory in \"Department\"$")
     public void selectAnySubcategoryInDepartment() {
         categoryPage.getFilters().getDepartmentFilter().selectRandomSubcategory();
+    }
+
+    @And("^select rating no less than 3 stars in \"Avg. Customer Review\"$")
+    public void selectRatingNoLessThanThreeStars() {
+        categoryPage.getFilters().getCustomerReviewRatingFilter().selectCustomerReviewRating(ReviewRating.THREE);
     }
 
 }
