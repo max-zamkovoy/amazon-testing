@@ -4,9 +4,9 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import util.Utils;
 
 import java.util.List;
-import java.util.Random;
 
 public class DepartmentFilter {
 
@@ -17,11 +17,7 @@ public class DepartmentFilter {
     }
 
     public void selectRandomSubcategory() {
-        List<WebElement> subcategories = getSubcategories();
-        if (CollectionUtils.isNotEmpty(subcategories)) {
-            int randomSubcategoryIndex = new Random().nextInt(subcategories.size());
-            subcategories.get(randomSubcategoryIndex).click();
-        }
+        Utils.selectRandom(getSubcategories());
     }
 
     public List<WebElement> getSubcategories() {

@@ -39,4 +39,9 @@ public class TestFiltersOnCategoryPageSteps {
         categoryPage.getFilters().getCustomerReviewRatingFilter().selectCustomerReviewRating(ReviewRating.THREE);
     }
 
+    @And("^check any box in \"Featured Brands\"")
+    public void checkAnyBoxInFeaturedBrands() {
+        categoryPage.getFilters().getFeaturedBrandsFilter().selectRandomFeaturedBrands();
+    }
+
 }
