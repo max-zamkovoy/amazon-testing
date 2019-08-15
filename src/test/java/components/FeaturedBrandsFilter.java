@@ -7,12 +7,10 @@ import util.Utils;
 
 import java.util.List;
 
-public class FeaturedBrandsFilter {
-
-    private final WebDriver driver;
+public class FeaturedBrandsFilter extends FilterAbstract {
 
     public FeaturedBrandsFilter(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void selectRandomFeaturedBrands() {

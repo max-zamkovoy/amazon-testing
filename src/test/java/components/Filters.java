@@ -7,11 +7,13 @@ public class Filters {
     private DepartmentFilter departmentFilter;
     private CustomerReviewRatingFilter customerReviewRatingFilter;
     private FeaturedBrandsFilter featuredBrandsFilter;
+    private PriceFilter priceFilter;
 
     public Filters(WebDriver driver) {
         this.departmentFilter = new DepartmentFilter(driver);
         this.customerReviewRatingFilter = new CustomerReviewRatingFilter(driver);
         this.featuredBrandsFilter = new FeaturedBrandsFilter(driver);
+        this.priceFilter = new PriceFilter(driver);
     }
 
     public DepartmentFilter getDepartmentFilter() {
@@ -24,5 +26,9 @@ public class Filters {
 
     public FeaturedBrandsFilter getFeaturedBrandsFilter() {
         return featuredBrandsFilter;
+    }
+
+    public PriceFilter getPriceFilter() {
+        return priceFilter;
     }
 }

@@ -4,12 +4,10 @@ import enums.ReviewRating;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CustomerReviewRatingFilter {
-
-    private final WebDriver driver;
+public class CustomerReviewRatingFilter extends FilterAbstract {
 
     public CustomerReviewRatingFilter(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void selectCustomerReviewRating(ReviewRating reviewRating) {

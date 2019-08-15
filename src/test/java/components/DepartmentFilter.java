@@ -1,6 +1,5 @@
 package components;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,12 +7,10 @@ import util.Utils;
 
 import java.util.List;
 
-public class DepartmentFilter {
-
-    private final WebDriver driver;
+public class DepartmentFilter extends FilterAbstract {
 
     public DepartmentFilter(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void selectRandomSubcategory() {
