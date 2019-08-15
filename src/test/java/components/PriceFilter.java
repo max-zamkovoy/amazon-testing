@@ -1,5 +1,7 @@
 package components;
 
+import core.RangeParser;
+import domain.Range;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,20 +25,14 @@ public class PriceFilter extends FilterAbstract {
 
     public Map<Range, WebElement> getPriceRanges() {
         Map<Range, WebElement> priceRanges = new HashMap<>();
+        RangeParser rangeParser = new RangeParser();
         By priceRange = By.cssSelector("#priceRefinements .s-navigation-item");
         driver.findElements(priceRange)
-                .forEach(priceLink -> priceRanges.put(createRange(getTextPriceRange(priceLink)), priceLink));
+                .forEach(priceLink -> priceRanges.put(rangeParser.parse(getTextPriceRange(priceLink)), priceLink));
         return priceRanges;
     }
 
     private String getTextPriceRange(WebElement price) {
         return price.findElement(By.tagName("span")).getText();
-    }
-
-    private Range createRange(String priceLine) {
-        Range range = new Range();
-        range.setLeftBound(0);
-        range.setRightBound(25);
-        return range;
     }
 }

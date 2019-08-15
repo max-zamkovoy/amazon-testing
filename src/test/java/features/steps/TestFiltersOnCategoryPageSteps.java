@@ -44,14 +44,9 @@ public class TestFiltersOnCategoryPageSteps {
         categoryPage.getFilters().getFeaturedBrandsFilter().selectRandomFeaturedBrands();
     }
 
-    @And("^select range by (\\d) in \"Price\"$")
-    public void selectRangeInPrice(double price) {
+    @And("^select range by [0-9]+ in \"Price\"$")
+    public void selectRangeInPrice(int price) {
         categoryPage.getFilters().getPriceFilter().selectPriceRange(price);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }
