@@ -1,5 +1,6 @@
 package features.steps;
 
+import components.Filters;
 import core.DriverInitializer;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -14,13 +15,13 @@ public class TestFiltersOnCategoryPageSteps {
     private static final String URL = "https://www.amazon.com/s?i=computers-intl-ship&bbn=16225007011&" +
             "rh=n%3A16225007011%2Cn%3A13896617011";
     private WebDriver driver;
-    private CategoryPage categoryPage;
+    private Filters filters;
 
     @Before
     public void setUp() {
         driver = DriverInitializer.openChromeDriver();
         driver.get(URL);
-        categoryPage = new CategoryPage(driver);
+        filters = new CategoryPage(driver).getFilters();
     }
 
     @After
@@ -31,22 +32,30 @@ public class TestFiltersOnCategoryPageSteps {
 
     @When("^select any subcategory in \"Department\"$")
     public void selectAnySubcategoryInDepartment() {
-        categoryPage.getFilters().getDepartmentFilter().selectRandomSubcategory();
+        filters.getDepartmentFilter().selectRandomSubcategory();
     }
 
     @And("^select rating no less than 3 stars in \"Avg. Customer Review\"$")
     public void selectRatingNoLessThanThreeStars() {
-        categoryPage.getFilters().getCustomerReviewRatingFilter().selectCustomerReviewRating(ReviewRating.THREE);
+        filters.getCustomerReviewRatingFilter().selectCustomerReviewRating(ReviewRating.THREE);
     }
 
     @And("^check any box in \"Featured Brands\"$")
     public void checkAnyBoxInFeaturedBrands() {
-        categoryPage.getFilters().getFeaturedBrandsFilter().selectRandomFeaturedBrands();
+        filters.getFeaturedBrandsFilter().selectRandomFeaturedBrands();
     }
 
-    @And("^select range by [0-9]+ in \"Price\"$")
-    public void selectRangeInPrice(int price) {
-        categoryPage.getFilters().getPriceFilter().selectPriceRange(price);
+    @And("^select any range in \"Price\"$")
+    public void selectRangeInPrice() {
+        int price = 40;
+        filters.getPriceFilter().selectPriceRange(price);
     }
 
+    @And("^input range in \"Price\"$")
+    public void inputRangeInPriceFields() {
+        filters.getPriceFilter()
+                .inputLeftBound(50)
+                .inputRightBound(1000)
+                .submitPriceRange();
+    }
 }

@@ -15,12 +15,28 @@ public class PriceFilter extends FilterAbstract {
         super(driver);
     }
 
-    public void selectPriceRange(double price) {
+    public PriceFilter selectPriceRange(double price) {
         getPriceRanges().forEach((k, v) -> {
             if (k.isInRange(price)) {
                 v.click();
             }
         });
+        return this;
+    }
+
+    public PriceFilter inputLeftBound(double price) {
+        driver.findElement(By.id("low-price")).sendKeys(String.valueOf(price));
+        return this;
+    }
+
+    public PriceFilter inputRightBound(double price) {
+        driver.findElement(By.id("high-price")).sendKeys(String.valueOf(price));
+        return this;
+    }
+
+    public PriceFilter submitPriceRange() {
+        driver.findElement(By.cssSelector("#priceRefinements input[type=submit]")).click();
+        return this;
     }
 
     public Map<Range, WebElement> getPriceRanges() {

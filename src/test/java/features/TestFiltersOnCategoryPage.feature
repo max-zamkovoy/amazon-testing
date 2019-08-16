@@ -1,12 +1,9 @@
 Feature: Amazon Category Page testing
 
-  Scenario Outline: Using filters
+  Scenario: Using filters
 
     When select any subcategory in "Department"
     And select rating no less than 3 stars in "Avg. Customer Review"
     And check any box in "Featured Brands"
-    And select range by <price> in "Price"
-
-    Examples:
-      | price |
-      | 10 |
+    And select any range in "Price"
+    And input range in "Price"
