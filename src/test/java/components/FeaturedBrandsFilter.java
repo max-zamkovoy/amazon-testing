@@ -1,9 +1,9 @@
 package components;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import util.Utils;
 
 import java.util.List;
 
@@ -13,8 +13,11 @@ public class FeaturedBrandsFilter extends FilterAbstract {
         super(driver);
     }
 
-    public void selectRandomFeaturedBrands() {
-        Utils.selectRandom(getFeaturedBrands());
+    public void selectFirstFeaturedBrands() {
+        List<WebElement> brands = getFeaturedBrands();
+        if (CollectionUtils.isNotEmpty(brands)) {
+            brands.iterator().next().click();
+        }
     }
 
     public List<WebElement> getFeaturedBrands() {

@@ -14,7 +14,7 @@ public class DepartmentFilter extends FilterAbstract {
     }
 
     public void selectRandomSubcategory() {
-        Utils.selectRandom(getSubcategories());
+        Utils.selectRandom(getSubcategories(), driver);
     }
 
     public List<WebElement> getSubcategories() {

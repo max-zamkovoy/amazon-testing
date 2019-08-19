@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 /**
  * Created by dorota.zelga on 23/03/2017.
  */
@@ -20,6 +22,10 @@ public class Wait {
 
     public WebElement untilElementIsVisible(By locator) {
         return new WebDriverWait(driver, DEFAULT_TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public List<WebElement> untilElementsIsVisible(By locator) {
+        return new WebDriverWait(driver, DEFAULT_TIMEOUT).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     public void untilElementIsInvisible(By locator) {
