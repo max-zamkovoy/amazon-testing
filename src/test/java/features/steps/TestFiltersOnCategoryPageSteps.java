@@ -48,9 +48,9 @@ public class TestFiltersOnCategoryPageSteps {
         filters.getCustomerReviewRatingFilter().selectCustomerReviewRating(ReviewRating.THREE);
     }
 
-    @And("^check first box in \"Featured Brands\"$")
-    public void checkFirstBoxInFeaturedBrands() {
-        filters.getFeaturedBrandsFilter().selectFirstFeaturedBrands();
+    @And("^check (\\S+) box in \"Featured Brands\"$")
+    public void checkBrandBoxInFeaturedBrands(String brand) {
+        filters.getFeaturedBrandsFilter().selectFeaturedBrands(brand);
     }
 
     @And("^select any range in \"Price\"$")
