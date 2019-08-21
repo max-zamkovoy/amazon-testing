@@ -25,12 +25,16 @@ public class PriceFilter extends FilterAbstract {
     }
 
     public PriceFilter inputLeftBound(double price) {
-        driver.findElement(By.id("low-price")).sendKeys(String.valueOf(price));
+        WebElement leftBoundInput = driver.findElement(By.id("low-price"));
+        leftBoundInput.clear();
+        leftBoundInput.sendKeys(String.valueOf(price));
         return this;
     }
 
     public PriceFilter inputRightBound(double price) {
-        driver.findElement(By.id("high-price")).sendKeys(String.valueOf(price));
+        WebElement rightBoundInput = driver.findElement(By.id("high-price"));
+        rightBoundInput.clear();
+        rightBoundInput.sendKeys(String.valueOf(price));
         return this;
     }
 

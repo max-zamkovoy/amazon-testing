@@ -11,5 +11,5 @@ Feature: Amazon Category Page testing
 
     Examples:
       | brand |
-      | Samsung |
+      | ASUS |
       | HP |
